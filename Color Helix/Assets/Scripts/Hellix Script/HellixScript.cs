@@ -14,8 +14,16 @@ public class HellixScript : MonoBehaviour
         if(movable && Touch.Ispressing())
         {
             float mouseX = this.GetMouseX();
-            lastdeltaAngle = lastTouchX
+            lastdeltaAngle = lastTouchX - mouseX;
+            angle += lastdeltaAngle * 360 * 1.7f;
+            lastTouchX = mouseX;
         }
+        else if(lastdeltaAngle != 0)
+        {
+            lastdeltaAngle -= lastdeltaAngle * 5 * Time.deltaTime;
+            angle += lastdeltaAngle * 360 * 1.7f;
+        }
+        transform.eulerAngles = new Vector3(0, 0, angle);
     }
 
     private float GetMouseX()
