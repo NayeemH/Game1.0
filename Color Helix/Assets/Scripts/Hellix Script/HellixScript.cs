@@ -4,15 +4,22 @@ using UnityEngine;
 
 public class HellixScript : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
+    private bool movable = true;
+    private float angle;
+    private float lastdeltaAngle, lastTouchX;
     // Update is called once per frame
     void Update()
     {
-        Touch.Ispressing();
+        if(movable && Touch.Ispressing())
+        {
+            float mouseX = this.GetMouseX();
+            lastdeltaAngle = lastTouchX
+        }
+    }
+
+    private float GetMouseX()
+    {
+        return Input.mousePosition.x / (float)Screen.width;
     }
 }
